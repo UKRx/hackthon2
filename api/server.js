@@ -99,14 +99,6 @@ app.get('/line', function(req, res, next) {
 
 // Add a new data
 app.post('/data/step1', function (req, res) {
- 
-    
-
-      
- 
-    // if (!id) {
-    //     return res.status(400).send({ error:true, message: 'Please provide step 1' });
-    // }
 
     mc.query("INSERT INTO project SET ? ", { 
         id : req.body.projectid,
@@ -115,12 +107,7 @@ app.post('/data/step1', function (req, res) {
         province : req.body.projectprovide,
         start_working : req.body.projectdatestart,
         finish_working : req.body.projectdateend
-        // id : "1",
-        // name : "1",
-        // name_en : "1",
-        // province : "1",
-        // start_working : "1",
-        // finish_working : "1"
+
     }, function (error, results, fields) {
         if (error) throw error;
         return res.send({ error: false, data: results, message: 'New data has been created successfully.' });
@@ -128,32 +115,7 @@ app.post('/data/step1', function (req, res) {
 
 });
  
-//  Update todo with id
-app.put('/todo', function (req, res) {
  
-    let task_id = req.body.task_id;
-    let task = req.body.task;
- 
-    if (!task_id || !task) {
-        return res.status(400).send({ error: task, message: 'Please provide task and task_id' });
-    }
- 
-    mc.query("UPDATE tasks SET task = ? WHERE id = ?", [task, task_id], function (error, results, fields) {
-        if (error) throw error;
-        return res.send({ error: false, data: results, message: 'Task has been updated successfully.' });
-    });
-});
- 
-//  Delete todo
-app.delete('/todo/:id', function (req, res) {
- 
-    let task_id = req.params.id;
- 
-    mc.query('DELETE FROM tasks WHERE id = ?', [task_id], function (error, results, fields) {
-        if (error) throw error;
-        return res.send({ error: false, data: results, message: 'Task has been updated successfully.' });
-    });
-});
  
 // all other requests redirect to 404
 app.all("*", function (req, res) {
@@ -166,4 +128,4 @@ app.listen(8080, function () {
 });
  
 // allows "grunt dev" to create a development server with livereload
-//module.exports = app;
+module.exports = app;
