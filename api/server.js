@@ -36,7 +36,7 @@ app.get('/project', function (req, res) {
     });
 });
  
-// Search for Project with ‘bug’ in their name
+// Search for Project in their name
 app.get('/projects/search/:keyword', function (req, res) {
     let keyword = req.params.keyword;
     mc.query("SELECT * FROM project WHERE name LIKE ? ", ['%' + keyword + '%'], function (error, results, fields) {
@@ -101,6 +101,54 @@ app.get('/line', function(req, res, next) {
 app.post('/data/step1', function (req, res) {
 
     mc.query("INSERT INTO project SET ? ", { 
+        id : req.body.projectid,
+        name : req.body.projectnamethai,
+        name_en : req.body.projectnameeng,
+        province : req.body.projectprovide,
+        start_working : req.body.projectdatestart,
+        finish_working : req.body.projectdateend
+
+    }, function (error, results, fields) {
+        if (error) throw error;
+        return res.send({ error: false, data: results, message: 'New data has been created successfully.' });
+    });
+
+});
+app.post('/data/step2', function (req, res) {
+
+    mc.query("INSERT INTO camp SET ? ", { 
+        id : req.body.projectid,
+        name : req.body.projectnamethai,
+        name_en : req.body.projectnameeng,
+        province : req.body.projectprovide,
+        start_working : req.body.projectdatestart,
+        finish_working : req.body.projectdateend
+
+    }, function (error, results, fields) {
+        if (error) throw error;
+        return res.send({ error: false, data: results, message: 'New data has been created successfully.' });
+    });
+
+});
+app.post('/data/step3', function (req, res) {
+
+    mc.query("INSERT INTO labor SET ? ", { 
+        id : req.body.projectid,
+        name : req.body.projectnamethai,
+        name_en : req.body.projectnameeng,
+        province : req.body.projectprovide,
+        start_working : req.body.projectdatestart,
+        finish_working : req.body.projectdateend
+
+    }, function (error, results, fields) {
+        if (error) throw error;
+        return res.send({ error: false, data: results, message: 'New data has been created successfully.' });
+    });
+
+});
+app.post('/data/step4', function (req, res) {
+
+    mc.query("INSERT INTO child SET ? ", { 
         id : req.body.projectid,
         name : req.body.projectnamethai,
         name_en : req.body.projectnameeng,
