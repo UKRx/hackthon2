@@ -41,8 +41,6 @@ class ChildProfile extends Component {
                     <br />
                     ประวัติการรับวัคซีน
                     <br />
-                    แรกเกิด
-                    <br />
           
                   </span>
                 }
