@@ -96,6 +96,36 @@ class Dashboard extends Component {
 
           </Row>
           <Row>
+            <Col lg={4} sm={6}>
+              <StatsCard
+                bigIcon={<i className="pe-7s-id text-warning" />}
+                statsText="เด็กที่ลงทะเบียนทั้งหมด"
+                statsValue="100"
+                statsIcon={<i className="fa fa-refresh" />}
+                statsIconText="Updated now"
+              />
+            </Col>
+            <Col lg={4} sm={6}>
+              <StatsCard
+                bigIcon={<i className="pe-7s-study text-success" />}
+                statsText="เด็กที่ได้รับการศึกษา"
+                statsValue="75"
+                statsIcon={<i className="fa fa-refresh" />}
+                statsIconText="Updated now"
+              />
+            </Col>
+            <Col lg={4} sm={6}>
+              <StatsCard
+                bigIcon={<i className="pe-7s-eyedropper text-danger" />}
+                statsText="เด็กที่ได้รับวัคซีน"
+                statsValue="25"
+                statsIcon={<i className="fa fa-refresh" />}
+                statsIconText="Updated now"
+              />
+            </Col>
+
+          </Row>
+          <Row>
             <Col md={12}>
               <Card
                 statsIcon="fa fa-history"
